@@ -22,6 +22,19 @@ fn main() {
     // cannot borrow as immutable because already borrowed as mutable
     //println!("The value of _r: '{}'.", _r);
 
+    // stuct
+    let mut alice_account: BankAccount = BankAccount{
+        owner: String::from("Alice"), // "Alice".to_string()
+        balance: 155.55,
+    };
+    // immutable borrow to check the balance
+    alice_account.check_balance();
+
+    // mutable borrow
+    alice_account.withdraw(45.5);
+
+    alice_account.check_balance();
+
 }
 
 // ownership
@@ -29,3 +42,22 @@ fn calculate_length(s: &String) -> usize {
     s.len()
 }
 //References and Borrowing
+
+// struct this is the properties of a Class
+// just for example, should never use float, use of rust_decimal crate
+struct BankAccount {
+    owner: String,
+    balance: f64,
+}
+
+// impl this is where all methods are defined
+impl BankAccount {
+    fn withdraw(&mut self, amount: f64) {
+        println!("Withdraw {} from account owned by {}", amount, self.owner);
+        self.balance -= amount;
+    }
+
+    fn check_balance(&self) {
+        println!("The balance of '{}' is {}.", self.owner, self.balance);
+    }
+}
