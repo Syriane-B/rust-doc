@@ -22,5 +22,57 @@ fn main() {
     let number = if condition { 5 } else { 6 };
     println!("The value of number is: {}", number);
 
+    // loops
+    // Loop unconditional
+    // loop {
+    //     println!("Hello World");
+    // }
+
+    let mut counter = 0;
+    let result: u16 = loop {
+        counter += 1;
+        if counter == 10 {
+            break counter +100;
+            // error if break counter -100
+        }
+    };
+    println!("The result is {result}");
+
+
+    // possible to break parent loop. using a loop name prefixed with 'loop_name
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {}", count);
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {}", remaining);
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+        count += 1;
+    }
+    // While
+    let mut counter = 0;
+    while counter <= 3 {
+        println!("count = {}", counter);
+        counter += 1;
+    }
+    println!("Hello");
+
+    // for elements
+
+    let a = [1, 2, 3, 4, 5];
+    let b = ["a", "b", "c"];
+    for element in a {
+        for letter in b {
+            println!("Matix: {element}|{letter}");
+        }
+    }
 
 }
