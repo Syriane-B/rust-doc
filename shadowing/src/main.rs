@@ -16,5 +16,10 @@ fn main() {
 
     println!("The value of space is : {}", spaces);
 
+    // comments one line comment
+    println!("The value of space l.9 is : {}", x); // comment at the end of the line
+    /*
+    bloc comment
+    */
 
 }
